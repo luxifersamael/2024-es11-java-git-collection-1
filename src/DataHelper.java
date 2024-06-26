@@ -1,8 +1,10 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.Set;
 
 public class DataHelper {
 
@@ -94,6 +96,10 @@ public class DataHelper {
     // restituisce una lista di numeri casuali NON DUPLICATI compresi tra 0 e max
     public static List<Integer> getRandomUniqueInteger(int size, int max) {
 
+        if (size > (max + 1)) {
+            throw new IllegalArgumentException("Size maggiore dei numeri da inserire.");
+        }
+        
         // creo una lista di interi
         List<Integer> randomIntegers = new ArrayList<>();
 
@@ -123,6 +129,11 @@ public class DataHelper {
     // restituisce una lista di numeri casuali NON DUPLICATI compresi tra min e
     // max
     public static List<Integer> getRandomUniqueInteger(int size, int min, int max) {
+
+        //gestione dell'errore, se size è maggiore della differenza tra max e min
+        if (size > (max - min + 1)) {
+            throw new IllegalArgumentException("Size maggiore dei numeri da inserire.");
+        }
 
         // creo una lista di interi
         List<Integer> randomIntegers = new ArrayList<>();
@@ -161,5 +172,7 @@ public class DataHelper {
 
         return frequencyMap;
     }
+
+
 
 }
